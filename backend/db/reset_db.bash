@@ -1,2 +1,2 @@
-$(> db/trains.sqlite)
-cat db/migrate.sql | sqlite3 db/trains.sqlite
+$(> ./trains.sqlite)
+cat ./migrate.sql | sqlite3 ./trains.sqlite
