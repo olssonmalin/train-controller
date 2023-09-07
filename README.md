@@ -71,9 +71,12 @@
     3. http://localhost:1337/codes
        Får `200 OK` och JSON objekt med koder.
 10. Fixar tickets endpoint genom att:
-    1.  Ändra `db/` till `./` i `reset_db.bash`
-    2.  Köra `reset_db.bash` i terminalen
-    3.  När `npm run dev` körs och vi testar endpoint `/tickets` får vi nu `200 OK`, POST fungerar även och när GET körs efter får vi den ticket vi lagt till.
+    1. Ändra `db/` till `./` i `reset_db.bash`
+    2. Köra `reset_db.bash` i terminalen
+    3. När `npm run dev` körs och vi testar endpoint `/tickets` får vi nu `200 OK`, POST fungerar även och när GET körs efter får vi den ticket vi lagt till.
+
+11. Testar att frontenden fungerar genom att köra `python3 -m http.server 1338` och gå in på 
+    `http://localhost:1338/` i en webb-browser. Allt verkar fungera som det ska.
 
 ### Val av frontend-ramverk
 
