@@ -1,4 +1,4 @@
-# Assignemnt 1 steps
+# Assignment 1 steps
 
 ## Få applikationen att fungera
 1. Skapade GitHub-repo & la till .gitignore
