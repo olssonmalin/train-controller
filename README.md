@@ -75,8 +75,8 @@
     2. Köra `reset_db.bash` i terminalen
     3. När `npm run dev` körs och vi testar endpoint `/tickets` får vi nu `200 OK`, POST fungerar även och när GET körs efter får vi den ticket vi lagt till.
 
-11. Testar att frontenden fungerar genom att köra `python3 -m http.server 1338` och gå in på 
-    `http://localhost:1338/` i en webb-browser. Allt verkar fungera som det ska.
+11. Testar att frontenden fungerar genom att köra `python3 -m http.server 9000` och gå in på 
+    `http://localhost:9000/` i en webb-browser. Allt verkar fungera som det ska.
 
 ### Val av frontend-ramverk
 
