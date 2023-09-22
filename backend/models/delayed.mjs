@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+import fetch from 'node-fetch';
 
 const delayed = {
     getDelayedTrains: function getDelayedTrains(req, res) {
@@ -47,4 +47,4 @@ const delayed = {
     }
 };
 
-module.exports = delayed;
+export default delayed;
