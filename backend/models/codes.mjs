@@ -1,5 +1,5 @@
-const fetch = require('node-fetch')
-const database = require('../db/database.js');
+import fetch from 'node-fetch';
+import database from '../db/database.mjs';
 
 const codes = {
     getCodes: async function getCodes(req, res){
@@ -30,4 +30,4 @@ const codes = {
     }
 };
 
-module.exports = codes;
+export default codes;

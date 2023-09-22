@@ -1,5 +1,5 @@
-const fetch = require('node-fetch')
-const EventSource = require('eventsource')
+import fetch from 'node-fetch';
+import EventSource from 'eventsource';
 
 async function fetchTrainPositions(io) {
 
@@ -72,4 +72,4 @@ async function fetchTrainPositions(io) {
     }
 }
 
-module.exports = fetchTrainPositions;
+export default fetchTrainPositions;
