@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import Map from "./Map.svelte";
-  import DelayedTable from "./DelayedTable.svelte";
+  import DelayedTable from "./ViewToggler.svelte";
   import { ticketViewState } from "../store.ts";
 
   let ticketViewStateValue = null;
@@ -12,7 +12,6 @@
   let delayedTrains = [];
 
   onMount(async () => {
-    // Fetch delayed train data from the API
     const response = await fetch("http://localhost:1337/delayed");
     const result = await response.json();
     delayedTrains = result.data;

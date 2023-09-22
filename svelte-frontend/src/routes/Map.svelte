@@ -33,17 +33,6 @@
   onDestroy(() => {
     socket.close();
   });
-
-
 </script>
 
-<style>
-    @import '../../node_modules/leaflet/dist/leaflet.css';
-
-    #map {
-        height: 100vh;
-        width: 60vw;
-    }
-</style>
-
-<div id="map"></div>
+<div id="map" class="map"></div>
