@@ -22,13 +22,13 @@ const tickets = {
             trainnumber: req.body.trainnumber,
             traindate: req.body.traindate
         }
-
-        const result =  await db.collection("tickets").insertOne(newTicket);
+        const col = await db.collection("tickets")
+        const result =  await col.insertOne(newTicket);
         console.log(`New listing created with the following id: ${result.insertedId}`);
 
         return res.json({
             data: {
-                id: result.lastID,
+                id: result.insertedId,
                 code: req.body.code,
                 trainnumber: req.body.trainnumber,
                 traindate: req.body.traindate,
