@@ -37,7 +37,7 @@
 		<a href="" id="back" data-testid="back-button" on:click={() => backFunctionality()}
 			>&lt;- Tillbaka</a
 		>
-		<h1 data-testid="ticket-heading">Nytt ärende #{tickets[1] ? tickets[1].id : 0}</h1>
+		<h1 data-testid="ticket-heading">Nytt ärende #{tickets[1] ? tickets[1]._id : 0}</h1>
 		{#if selectedTrain.FromLocation}
 			<h3 data-testid="selected-train-info">
 				Tåg från {selectedTrain.FromLocation[0].LocationName} till {selectedTrain.ToLocation[0]
