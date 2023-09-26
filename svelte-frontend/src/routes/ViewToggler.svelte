@@ -3,6 +3,8 @@
 	import TicketView from './TicketView.svelte';
 	import DelayedTable from './DelayedTable.svelte';
 
+	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 	export let delayedTrains = [];
 	let selectedTrain = null;
 	let codes = [];
@@ -20,11 +22,11 @@
 	async function renderTicketView(train) {
 		selectedTrain = train;
 
-		let response = await fetch('http://localhost:1337/codes');
+		let response = await fetch(`${BACKEND_URL}/codes`);
 		let result = await response.json();
 		codes = result.data;
 
-		response = await fetch('http://localhost:1337/tickets');
+		response = await fetch(`${BACKEND_URL}/tickets`);
 		result = await response.json();
 		tickets = result.data;
 

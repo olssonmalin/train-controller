@@ -2,6 +2,8 @@
 	import TicketForm from './TicketForm.svelte';
 	import OldTickets from './OldTickets.svelte';
 
+	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 	export let selectedTrain;
 	export let renderTicketView;
 	export let tickets;
@@ -20,7 +22,9 @@
 			traindate: selectedTrain.EstimatedTimeAtLocation.substring(0, 10)
 		};
 
-		await fetch('http://localhost:1337/tickets', {
+		console.log(BACKEND_URL);
+
+		await fetch(`${BACKEND_URL}/tickets`, {
 			body: JSON.stringify(newTicket),
 			headers: {
 				'content-type': 'application/json'
@@ -37,7 +41,7 @@
 		<a href="" id="back" data-testid="back-button" on:click={() => backFunctionality()}
 			>&lt;- Tillbaka</a
 		>
-		<h1 data-testid="ticket-heading">Nytt ärende #{tickets[1] ? tickets[1].id : 0}</h1>
+		<h1 data-testid="ticket-heading">Nytt ärende #{tickets[1] ? tickets[1]._id : 0}</h1>
 		{#if selectedTrain.FromLocation}
 			<h3 data-testid="selected-train-info">
 				Tåg från {selectedTrain.FromLocation[0].LocationName} till {selectedTrain.ToLocation[0]

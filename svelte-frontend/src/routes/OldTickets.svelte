@@ -6,7 +6,7 @@
 	<h2>Befintliga ärenden</h2>
 	{#each tickets as ticket}
 		<div data-testid="singular-ticket">
-			{ticket.id} - {ticket.code} - {ticket.trainnumber} - {ticket.traindate}
+			{ticket._id} - {ticket.code} - {ticket.trainnumber} - {ticket.traindate}
 		</div>
 	{/each}
 </div>

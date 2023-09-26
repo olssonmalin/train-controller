@@ -4,6 +4,8 @@
 	import DelayedTable from './ViewToggler.svelte';
 	import { ticketViewState } from '../store.ts';
 
+	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 	let ticketViewStateValue = null;
 	ticketViewState.subscribe((value) => {
 		ticketViewStateValue = value;
@@ -12,7 +14,7 @@
 	let delayedTrains = [];
 
 	onMount(async () => {
-		const response = await fetch('http://localhost:1337/delayed');
+		const response = await fetch(`${BACKEND_URL}/delayed`);
 		const result = await response.json();
 		delayedTrains = result.data;
 	});
