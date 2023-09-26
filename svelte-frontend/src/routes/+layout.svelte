@@ -1,9 +1,9 @@
 <script>
-  import './style.css';
+	import './style.css';
 </script>
 
 <div class="app">
-  <main>
-    <slot />
-  </main>
+	<main>
+		<slot />
+	</main>
 </div>

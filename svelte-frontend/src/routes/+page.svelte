@@ -1,31 +1,30 @@
 <script>
-  import { onMount } from "svelte";
-  import Map from "./Map.svelte";
-  import DelayedTable from "./ViewToggler.svelte";
-  import { ticketViewState } from "../store.ts";
+	import { onMount } from 'svelte';
+	import Map from './Map.svelte';
+	import DelayedTable from './ViewToggler.svelte';
+	import { ticketViewState } from '../store.ts';
 
-  let ticketViewStateValue = null;
-  ticketViewState.subscribe(value => {
-    ticketViewStateValue = value;
-  });
+	let ticketViewStateValue = null;
+	ticketViewState.subscribe((value) => {
+		ticketViewStateValue = value;
+	});
 
-  let delayedTrains = [];
+	let delayedTrains = [];
 
-  onMount(async () => {
-    const response = await fetch("http://localhost:1337/delayed");
-    const result = await response.json();
-    delayedTrains = result.data;
-  });
+	onMount(async () => {
+		const response = await fetch('http://localhost:1337/delayed');
+		const result = await response.json();
+		delayedTrains = result.data;
+	});
 </script>
 
 <svelte:head>
-  <title>TrafikLedare applikationen</title>
+	<title>TrafikLedare applikationen</title>
 </svelte:head>
 
 <section class="container">
-  <DelayedTable {delayedTrains} />
-  {#if ticketViewStateValue !== 'active'}
-    <Map />
-  {/if}
+	<DelayedTable {delayedTrains} />
+	{#if ticketViewStateValue !== 'active'}
+		<Map />
+	{/if}
 </section>
-
