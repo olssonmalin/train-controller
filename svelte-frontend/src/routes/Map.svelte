@@ -3,6 +3,8 @@
 	import L from 'leaflet';
 	import { io } from 'socket.io-client';
 
+	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 	let socket;
 
 	let map;
@@ -15,7 +17,7 @@
 			maxZoom: 19
 		}).addTo(map);
 
-		socket = io('http://localhost:1337');
+		socket = io(BACKEND_URL);
 
 		socket.on('message', (data) => {
 			if (markers.hasOwnProperty(data.trainnumber)) {
