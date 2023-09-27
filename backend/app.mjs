@@ -21,8 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 const io = new Server(httpServer, {
   cors: {
-    origin: `http://localhost:${process.env.FRONTEND_PORT}`,
-    methods: ["GET", "POST"]
+    origin: `*`,
+    methods: ["GET", "POST"],
+    optionsSuccessStatus: 200
   }
 });
 
