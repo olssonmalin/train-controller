@@ -1,5 +1,6 @@
 <script>
 	import { showTrainMap } from '../store.ts';
+	import { showTrainMap } from '../store.ts';
 	export let train;
 	export let renderTicketView;
 	export let outputDelay;
@@ -24,7 +25,7 @@
 		</div>
 	</div>
 	<div class="delay" data-testid="output-delay">{outputDelay(train)}</div>
-	<button on:click={() => renderTicketView(train)}>Skapa ärende</button>
+	<button data-testid="new-ticket" on:click={() => renderTicketView(train)}>Skapa ärende</button>
 </div>
 
 <style>
