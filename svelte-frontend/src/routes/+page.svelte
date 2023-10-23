@@ -1,8 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
+	import { afterUpdate, onMount } from 'svelte';
 	import Map from './Map.svelte';
 	import DelayedTable from './ViewToggler.svelte';
-	import { ticketViewState } from '../store.ts';
+	import { ticketViewState, showTrainTable } from '../store.ts';
 
 	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -12,11 +12,12 @@
 	});
 
 	let delayedTrains = [];
-
+	let delayedTrainNumbers;
 	onMount(async () => {
 		const response = await fetch(`${BACKEND_URL}/delayed`);
 		const result = await response.json();
 		delayedTrains = result.data;
+		delayedTrainNumbers = delayedTrains.map((item) => item.AdvertisedTrainIdent);
 	});
 </script>
 
@@ -27,6 +28,6 @@
 <section class="container">
 	<DelayedTable {delayedTrains} />
 	{#if ticketViewStateValue !== 'active'}
-		<Map />
+		<Map {delayedTrainNumbers} />
 	{/if}
 </section>

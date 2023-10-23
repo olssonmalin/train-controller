@@ -88,7 +88,7 @@ test('submit triggers renderticketview', () => {
 	const renderTicketView = vi.fn();
 	const outputDelay = () => 10;
 	render(DelayedTableRow, { train, renderTicketView, outputDelay });
-	const delayedRow = screen.getByTestId('delayed-row');
-	fireEvent.click(delayedRow);
+	const newTicketButton = screen.getByTestId('new-ticket');
+	fireEvent.click(newTicketButton);
 	expect(renderTicketView).toHaveBeenCalledTimes(1);
 });
