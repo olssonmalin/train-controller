@@ -1,9 +1,7 @@
-import fetch from 'node-fetch';
+import 'node-fetch';
 
-import database from '../db/database.mjs';
-
-const codes = {
-    getCodes: async function getCodes(req, res) {
+const codesService = {
+    fetchCodes: async () => {
         const query = `<REQUEST>
                   <LOGIN authenticationkey="${process.env.TRAFIKVERKET_API_KEY}" />
                   <QUERY objecttype="ReasonCode" schemaversion="1">
@@ -14,23 +12,17 @@ const codes = {
                   </QUERY>
             </REQUEST>`;
 
-        const response = fetch(
+        const response = await fetch(
             'https://api.trafikinfo.trafikverket.se/v2/data.json',
             {
                 method: 'POST',
                 body: query,
                 headers: { 'Content-Type': 'text/xml' },
             },
-        )
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (result) {
-                return res.json({
-                    data: result.RESPONSE.RESULT[0].ReasonCode,
-                });
-            });
+        );
+
+        return response.json();
     },
 };
 
-export default codes;
+export default codesService;

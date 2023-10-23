@@ -1,17 +1,17 @@
-import fetch from 'node-fetch';
+import 'node-fetch';
 
-const delayed = {
-    getDelayedTrains: function getDelayedTrains(req, res) {
+const delayedService = {
+    fetchDelayedTrains: async () => {
         const query = `<REQUEST>
                   <LOGIN authenticationkey="${process.env.TRAFIKVERKET_API_KEY}" />
-                  <QUERY objecttype="TrainAnnouncement" orderby='AdvertisedTimeAtLocation' schemaversion="1.8">
+                  <QUERY objecttype="TrainAnnouncement" orderby="AdvertisedTimeAtLocation" schemaversion="1.8">
                         <FILTER>
                         <AND>
                             <EQ name="ActivityType" value="Avgang" />
                             <GT name="EstimatedTimeAtLocation" value="$now" />
                             <AND>
-                                <GT name='AdvertisedTimeAtLocation' value='$dateadd(-00:15:00)' />
-                                <LT name='AdvertisedTimeAtLocation'                   value='$dateadd(02:00:00)' />
+                                <GT name="AdvertisedTimeAtLocation" value="$dateadd(-00:15:00)" />
+                                <LT name="AdvertisedTimeAtLocation"                   value="$dateadd(02:00:00)" />
                             </AND>
                         </AND>
                         </FILTER>
@@ -30,23 +30,17 @@ const delayed = {
                   </QUERY>
             </REQUEST>`;
 
-        const response = fetch(
+        const response = await fetch(
             'https://api.trafikinfo.trafikverket.se/v2/data.json',
             {
                 method: 'POST',
                 body: query,
                 headers: { 'Content-Type': 'text/xml' },
             },
-        )
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (result) {
-                return res.json({
-                    data: result.RESPONSE.RESULT[0].TrainAnnouncement,
-                });
-            });
+        );
+
+        return response.json();
     },
 };
 
-export default delayed;
+export default delayedService;

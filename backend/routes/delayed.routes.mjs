@@ -1,8 +1,10 @@
 import { Router } from 'express';
+
+import delayedController from '../controllers/delayed.controller.mjs';
+import authMiddleware from '../middleware/auth.middleware.mjs';
+
 const router = Router();
 
-import delayed from "../models/delayed.mjs";
-
-router.get('/', (req, res) => delayed.getDelayedTrains(req, res));
+router.get('/', (req, res) => delayedController.getDelayedTrains(req, res));
 
 export default router;

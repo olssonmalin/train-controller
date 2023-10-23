@@ -1,10 +1,22 @@
 import { Router } from 'express';
+
+import ticketsController from '../controllers/tickets.controller.mjs';
+import authMiddleware from '../middleware/auth.middleware.mjs';
+
 const router = Router();
 
-import tickets from "../models/tickets.mjs";
+router.get(
+    '/',
+    /*
+    (req, res, next) => authMiddleware(req, res, next),
+*/
+    (req, res) => ticketsController.getTickets(req, res),
+);
 
-router.get('/', (req, res) => tickets.getTickets(req, res));
-
-router.post('/', (req, res) => tickets.createTicket(req, res));
+router.post(
+    '/',
+    /*(req, res, next) => authMiddleware(req, res, next),*/
+    (req, res) => ticketsController.createTicket(req, res),
+);
 
 export default router;
