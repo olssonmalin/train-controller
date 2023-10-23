@@ -1,24 +1,40 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
-import "../loadEnvoironment.mjs";
 
-const uri = `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PASSWORD}@traincontroller.zkv3txq.mongodb.net/?retryWrites=true&w=majority`;
+import '../loadEnvironment.mjs';
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+class MongoDBSingleton {
+    constructor() {
+        if (MongoDBSingleton.instance) {
+            return MongoDBSingleton.instance;
+        }
 
-let conn;
-try {
-  conn = await client.connect();
-} catch(e) {
-  console.error(e);
+        const uri = `mongodb+srv://${process.env.ATLAS_USERNAME}:${process.env.ATLAS_PASSWORD}@traincontroller.zkv3txq.mongodb.net/?retryWrites=true&w=majority`;
+
+        this.client = new MongoClient(uri, {
+            serverApi: {
+                version: ServerApiVersion.v1,
+                strict: true,
+                deprecationErrors: true,
+            },
+        });
+
+        this.db = null;
+
+        MongoDBSingleton.instance = this;
+    }
+
+    async connect() {
+        try {
+            await this.client.connect();
+            this.db = this.client.db('train_controller');
+            return this.db;
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
 }
 
-let db = conn.db("train_controller");
+const mongoDBSingleton = new MongoDBSingleton();
 
-export default db;
+export default mongoDBSingleton;

@@ -1,372 +1,295 @@
 {
-  "added": 7,
-  "removed": 21,
-  "changed": 25,
-  "audited": 202,
-  "funding": 12,
-  "audit": {
-    "auditReportVersion": 2,
-    "vulnerabilities": {
-      "debug": {
-        "name": "debug",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1089147,
-            "name": "debug",
-            "dependency": "debug",
-            "title": "debug Inefficient Regular Expression Complexity vulnerability",
-            "url": "https://github.com/advisories/GHSA-9vvw-cc9w-f27h",
-            "severity": "high",
-            "cwe": [
-              "CWE-1333"
-            ],
-            "cvss": {
-              "score": 7.5,
-              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+    "added": 7,
+    "removed": 21,
+    "changed": 25,
+    "audited": 202,
+    "funding": 12,
+    "audit": {
+        "auditReportVersion": 2,
+        "vulnerabilities": {
+            "debug": {
+                "name": "debug",
+                "severity": "high",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1089147,
+                        "name": "debug",
+                        "dependency": "debug",
+                        "title": "debug Inefficient Regular Expression Complexity vulnerability",
+                        "url": "https://github.com/advisories/GHSA-9vvw-cc9w-f27h",
+                        "severity": "high",
+                        "cwe": ["CWE-1333"],
+                        "cvss": {
+                            "score": 7.5,
+                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                        },
+                        "range": "<2.6.9"
+                    },
+                    {
+                        "source": 1090974,
+                        "name": "debug",
+                        "dependency": "debug",
+                        "title": "Regular Expression Denial of Service in debug",
+                        "url": "https://github.com/advisories/GHSA-gxpj-cx7g-858c",
+                        "severity": "low",
+                        "cwe": ["CWE-400"],
+                        "cvss": {
+                            "score": 0,
+                            "vectorString": null
+                        },
+                        "range": "<2.6.9"
+                    },
+                    "ms"
+                ],
+                "effects": ["express", "finalhandler", "send"],
+                "range": "<=2.6.8",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<2.6.9"
-          },
-          {
-            "source": 1090974,
-            "name": "debug",
-            "dependency": "debug",
-            "title": "Regular Expression Denial of Service in debug",
-            "url": "https://github.com/advisories/GHSA-gxpj-cx7g-858c",
-            "severity": "low",
-            "cwe": [
-              "CWE-400"
-            ],
-            "cvss": {
-              "score": 0,
-              "vectorString": null
+            "express": {
+                "name": "express",
+                "severity": "high",
+                "isDirect": false,
+                "via": [
+                    "debug",
+                    "finalhandler",
+                    "fresh",
+                    "qs",
+                    "send",
+                    "serve-static"
+                ],
+                "effects": [],
+                "range": "2.5.8 - 4.15.4 || 5.0.0-alpha.1 - 5.0.0-alpha.5",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<2.6.9"
-          },
-          "ms"
-        ],
-        "effects": [
-          "express",
-          "finalhandler",
-          "send"
-        ],
-        "range": "<=2.6.8",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "express": {
-        "name": "express",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          "debug",
-          "finalhandler",
-          "fresh",
-          "qs",
-          "send",
-          "serve-static"
-        ],
-        "effects": [],
-        "range": "2.5.8 - 4.15.4 || 5.0.0-alpha.1 - 5.0.0-alpha.5",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "finalhandler": {
-        "name": "finalhandler",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          "debug"
-        ],
-        "effects": [
-          "express"
-        ],
-        "range": "<=1.0.5",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "fresh": {
-        "name": "fresh",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1090991,
-            "name": "fresh",
-            "dependency": "fresh",
-            "title": "Regular Expression Denial of Service in fresh",
-            "url": "https://github.com/advisories/GHSA-9qj9-36jm-prpv",
-            "severity": "high",
-            "cwe": [
-              "CWE-400"
-            ],
-            "cvss": {
-              "score": 0,
-              "vectorString": null
+            "finalhandler": {
+                "name": "finalhandler",
+                "severity": "high",
+                "isDirect": false,
+                "via": ["debug"],
+                "effects": ["express"],
+                "range": "<=1.0.5",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<0.5.2"
-          }
-        ],
-        "effects": [
-          "express",
-          "send"
-        ],
-        "range": "<0.5.2",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "mime": {
-        "name": "mime",
-        "severity": "moderate",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1091798,
-            "name": "mime",
-            "dependency": "mime",
-            "title": "mime Regular Expression Denial of Service when mime lookup performed on untrusted user input",
-            "url": "https://github.com/advisories/GHSA-wrvr-8mpx-r7pp",
-            "severity": "moderate",
-            "cwe": [
-              "CWE-400"
-            ],
-            "cvss": {
-              "score": 0,
-              "vectorString": null
+            "fresh": {
+                "name": "fresh",
+                "severity": "high",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1090991,
+                        "name": "fresh",
+                        "dependency": "fresh",
+                        "title": "Regular Expression Denial of Service in fresh",
+                        "url": "https://github.com/advisories/GHSA-9qj9-36jm-prpv",
+                        "severity": "high",
+                        "cwe": ["CWE-400"],
+                        "cvss": {
+                            "score": 0,
+                            "vectorString": null
+                        },
+                        "range": "<0.5.2"
+                    }
+                ],
+                "effects": ["express", "send"],
+                "range": "<0.5.2",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<1.4.1"
-          }
-        ],
-        "effects": [
-          "send"
-        ],
-        "range": "<1.4.1",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "ms": {
-        "name": "ms",
-        "severity": "moderate",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1088818,
-            "name": "ms",
-            "dependency": "ms",
-            "title": "Vercel ms Inefficient Regular Expression Complexity vulnerability",
-            "url": "https://github.com/advisories/GHSA-w9mr-4mfr-499f",
-            "severity": "moderate",
-            "cwe": [
-              "CWE-1333"
-            ],
-            "cvss": {
-              "score": 5.3,
-              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            "mime": {
+                "name": "mime",
+                "severity": "moderate",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1091798,
+                        "name": "mime",
+                        "dependency": "mime",
+                        "title": "mime Regular Expression Denial of Service when mime lookup performed on untrusted user input",
+                        "url": "https://github.com/advisories/GHSA-wrvr-8mpx-r7pp",
+                        "severity": "moderate",
+                        "cwe": ["CWE-400"],
+                        "cvss": {
+                            "score": 0,
+                            "vectorString": null
+                        },
+                        "range": "<1.4.1"
+                    }
+                ],
+                "effects": ["send"],
+                "range": "<1.4.1",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<2.0.0"
-          }
-        ],
-        "effects": [
-          "debug",
-          "send"
-        ],
-        "range": "<2.0.0",
-        "nodes": [
-          "",
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "node-fetch": {
-        "name": "node-fetch",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1091239,
-            "name": "node-fetch",
-            "dependency": "node-fetch",
-            "title": "node-fetch is vulnerable to Exposure of Sensitive Information to an Unauthorized Actor",
-            "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g",
-            "severity": "high",
-            "cwe": [
-              "CWE-173",
-              "CWE-200",
-              "CWE-601"
-            ],
-            "cvss": {
-              "score": 8.8,
-              "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+            "ms": {
+                "name": "ms",
+                "severity": "moderate",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1088818,
+                        "name": "ms",
+                        "dependency": "ms",
+                        "title": "Vercel ms Inefficient Regular Expression Complexity vulnerability",
+                        "url": "https://github.com/advisories/GHSA-w9mr-4mfr-499f",
+                        "severity": "moderate",
+                        "cwe": ["CWE-1333"],
+                        "cvss": {
+                            "score": 5.3,
+                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                        },
+                        "range": "<2.0.0"
+                    }
+                ],
+                "effects": ["debug", "send"],
+                "range": "<2.0.0",
+                "nodes": ["", ""],
+                "fixAvailable": true
             },
-            "range": "<2.6.7"
-          }
-        ],
-        "effects": [],
-        "range": "<2.6.7",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "qs": {
-        "name": "qs",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1087525,
-            "name": "qs",
-            "dependency": "qs",
-            "title": "Prototype Pollution Protection Bypass in qs",
-            "url": "https://github.com/advisories/GHSA-gqgv-6jq5-jjj9",
-            "severity": "high",
-            "cwe": [
-              "CWE-20"
-            ],
-            "cvss": {
-              "score": 7.5,
-              "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            "node-fetch": {
+                "name": "node-fetch",
+                "severity": "high",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1091239,
+                        "name": "node-fetch",
+                        "dependency": "node-fetch",
+                        "title": "node-fetch is vulnerable to Exposure of Sensitive Information to an Unauthorized Actor",
+                        "url": "https://github.com/advisories/GHSA-r683-j2x4-v87g",
+                        "severity": "high",
+                        "cwe": ["CWE-173", "CWE-200", "CWE-601"],
+                        "cvss": {
+                            "score": 8.8,
+                            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+                        },
+                        "range": "<2.6.7"
+                    }
+                ],
+                "effects": [],
+                "range": "<2.6.7",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": ">=6.2.0 <6.2.3"
-          },
-          {
-            "source": 1090132,
-            "name": "qs",
-            "dependency": "qs",
-            "title": "qs vulnerable to Prototype Pollution",
-            "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
-            "severity": "high",
-            "cwe": [
-              "CWE-1321"
-            ],
-            "cvss": {
-              "score": 7.5,
-              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            "qs": {
+                "name": "qs",
+                "severity": "high",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1087525,
+                        "name": "qs",
+                        "dependency": "qs",
+                        "title": "Prototype Pollution Protection Bypass in qs",
+                        "url": "https://github.com/advisories/GHSA-gqgv-6jq5-jjj9",
+                        "severity": "high",
+                        "cwe": ["CWE-20"],
+                        "cvss": {
+                            "score": 7.5,
+                            "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                        },
+                        "range": ">=6.2.0 <6.2.3"
+                    },
+                    {
+                        "source": 1090132,
+                        "name": "qs",
+                        "dependency": "qs",
+                        "title": "qs vulnerable to Prototype Pollution",
+                        "url": "https://github.com/advisories/GHSA-hrpp-h998-j3pp",
+                        "severity": "high",
+                        "cwe": ["CWE-1321"],
+                        "cvss": {
+                            "score": 7.5,
+                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+                        },
+                        "range": "<6.2.4"
+                    }
+                ],
+                "effects": ["express"],
+                "range": "<=6.2.3",
+                "nodes": [""],
+                "fixAvailable": true
             },
-            "range": "<6.2.4"
-          }
-        ],
-        "effects": [
-          "express"
-        ],
-        "range": "<=6.2.3",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "semver": {
-        "name": "semver",
-        "severity": "moderate",
-        "isDirect": false,
-        "via": [
-          {
-            "source": 1092460,
-            "name": "semver",
-            "dependency": "semver",
-            "title": "semver vulnerable to Regular Expression Denial of Service",
-            "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
-            "severity": "moderate",
-            "cwe": [
-              "CWE-1333"
-            ],
-            "cvss": {
-              "score": 5.3,
-              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            "semver": {
+                "name": "semver",
+                "severity": "moderate",
+                "isDirect": false,
+                "via": [
+                    {
+                        "source": 1092460,
+                        "name": "semver",
+                        "dependency": "semver",
+                        "title": "semver vulnerable to Regular Expression Denial of Service",
+                        "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+                        "severity": "moderate",
+                        "cwe": ["CWE-1333"],
+                        "cvss": {
+                            "score": 5.3,
+                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                        },
+                        "range": ">=6.0.0 <6.3.1"
+                    },
+                    {
+                        "source": 1092461,
+                        "name": "semver",
+                        "dependency": "semver",
+                        "title": "semver vulnerable to Regular Expression Denial of Service",
+                        "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
+                        "severity": "moderate",
+                        "cwe": ["CWE-1333"],
+                        "cvss": {
+                            "score": 5.3,
+                            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+                        },
+                        "range": ">=7.0.0 <7.5.2"
+                    }
+                ],
+                "effects": [],
+                "range": "6.0.0 - 6.3.0 || 7.0.0 - 7.5.1",
+                "nodes": ["", ""],
+                "fixAvailable": true
             },
-            "range": ">=6.0.0 <6.3.1"
-          },
-          {
-            "source": 1092461,
-            "name": "semver",
-            "dependency": "semver",
-            "title": "semver vulnerable to Regular Expression Denial of Service",
-            "url": "https://github.com/advisories/GHSA-c2qf-rxjj-qqgw",
-            "severity": "moderate",
-            "cwe": [
-              "CWE-1333"
-            ],
-            "cvss": {
-              "score": 5.3,
-              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            "send": {
+                "name": "send",
+                "severity": "high",
+                "isDirect": false,
+                "via": ["debug", "fresh", "mime", "ms"],
+                "effects": ["express", "serve-static"],
+                "range": "<=0.15.6",
+                "nodes": ["", ""],
+                "fixAvailable": true
             },
-            "range": ">=7.0.0 <7.5.2"
-          }
-        ],
-        "effects": [],
-        "range": "6.0.0 - 6.3.0 || 7.0.0 - 7.5.1",
-        "nodes": [
-          "",
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "send": {
-        "name": "send",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          "debug",
-          "fresh",
-          "mime",
-          "ms"
-        ],
-        "effects": [
-          "express",
-          "serve-static"
-        ],
-        "range": "<=0.15.6",
-        "nodes": [
-          "",
-          ""
-        ],
-        "fixAvailable": true
-      },
-      "serve-static": {
-        "name": "serve-static",
-        "severity": "high",
-        "isDirect": false,
-        "via": [
-          "send"
-        ],
-        "effects": [
-          "express"
-        ],
-        "range": "1.1.0 - 1.12.5",
-        "nodes": [
-          ""
-        ],
-        "fixAvailable": true
-      }
-    },
-    "metadata": {
-      "vulnerabilities": {
-        "info": 0,
-        "low": 0,
-        "moderate": 3,
-        "high": 8,
-        "critical": 0,
-        "total": 11
-      },
-      "dependencies": {
-        "prod": 152,
-        "dev": 0,
-        "optional": 50,
-        "peer": 0,
-        "peerOptional": 0,
-        "total": 201
-      }
+            "serve-static": {
+                "name": "serve-static",
+                "severity": "high",
+                "isDirect": false,
+                "via": ["send"],
+                "effects": ["express"],
+                "range": "1.1.0 - 1.12.5",
+                "nodes": [""],
+                "fixAvailable": true
+            }
+        },
+        "metadata": {
+            "vulnerabilities": {
+                "info": 0,
+                "low": 0,
+                "moderate": 3,
+                "high": 8,
+                "critical": 0,
+                "total": 11
+            },
+            "dependencies": {
+                "prod": 152,
+                "dev": 0,
+                "optional": 50,
+                "peer": 0,
+                "peerOptional": 0,
+                "total": 201
+            }
+        }
     }
-  }
 }
