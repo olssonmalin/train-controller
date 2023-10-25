@@ -21,7 +21,7 @@ const authController = {
         }
 
         const token = jwtUtils.generateToken(existingUser);
-        res.json({
+        res.status(200).json({
             token,
         });
     },
