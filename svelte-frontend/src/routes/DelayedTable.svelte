@@ -3,13 +3,13 @@
 	import DelayedTableRow from './DelayedTableRow.svelte';
 	import { showTrainTable, showTrainMap } from '../store.ts';
 	export let delayedTrains;
-	export let renderTicketView;
+	export let getTickets;
 	export let outputDelay;
-	export let selected;
+	let selected = null;
 
 	afterUpdate(() => {
 		if ($showTrainTable) {
-			selected = delayedTrains.filter((train) => train.OperationalTrainNumber === $showTrainTable);
+			selected = delayedTrains.filter((train) => train.AdvertisedTrainIdent === $showTrainTable);
 			console.log(selected);
 		} else {
 			selected = null;
@@ -30,11 +30,11 @@
 	<div class="delayed-trains">
 		{#if selected}
 			{#each selected as train, index (index)}
-				<DelayedTableRow {train} {renderTicketView} {outputDelay} />
+				<DelayedTableRow {train} {getTickets} {outputDelay} />
 			{/each}
 		{:else}
 			{#each delayedTrains as train, index (index)}
-				<DelayedTableRow {train} {renderTicketView} {outputDelay} />
+				<DelayedTableRow {train} {getTickets} {outputDelay} />
 			{/each}
 		{/if}
 	</div>
