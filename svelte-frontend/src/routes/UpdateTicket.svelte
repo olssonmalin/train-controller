@@ -1,10 +1,11 @@
 <script>
+	import { loggedInUser } from '../store';
+	import { io } from 'socket.io-client';
 	export let codes;
 	export let ticket;
 	import { onMount, onDestroy } from 'svelte';
 	export let getTickets;
-	import { loggedInUser } from '../store';
-	import { io } from 'socket.io-client';
+
 	let formData = {
 		_id: ticket._id,
 		code: ticket.code,

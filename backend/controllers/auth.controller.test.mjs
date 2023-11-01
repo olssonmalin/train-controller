@@ -1,12 +1,10 @@
 // authController.test.js
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 
-// Import your controller
 import usersService from '../services/users.service.mjs';
 import jwtUtils from '../utils/jwt.mjs';
 import authController from './auth.controller.mjs';
 
-// Mock the dependencies (usersService and jwtUtils) to isolate the controller for testing.
 jest.mock('../services/users.service.mjs', () => ({
     findUserByEmail: jest.fn(),
     createUser: jest.fn(),

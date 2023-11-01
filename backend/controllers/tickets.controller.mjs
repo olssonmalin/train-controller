@@ -24,6 +24,14 @@ const ticketsController = {
             },
         });
     },
+    deleteTicket: async (req, res) => {
+        const ticketId = req.body.ticketId;
+        await ticketsService.deleteTicket(ticketId);
+        return res.sendStatus(201);
+    },
+    updateTicket: async (req, res) => {
+
+    }
 };
 
 export default ticketsController;

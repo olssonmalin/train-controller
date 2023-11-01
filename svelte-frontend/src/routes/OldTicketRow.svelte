@@ -1,10 +1,8 @@
 <script>
+	import UpdateTicket from './UpdateTicket.svelte';
 	export let ticket;
 	export let codes;
 	export let getTickets;
-	import UpdateTicket from './UpdateTicket.svelte';
-	import { loggedInUser } from '../store';
-	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 </script>
 
 <div data-testid="delayed-row">
