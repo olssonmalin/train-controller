@@ -7,7 +7,7 @@ test('shows proper heading when rendered', () => {
 		return {};
 	});
 
-	const delayedTrains = [];
+	const delayedTrains: never[] = [];
 	const renderTicketView = vi.fn();
 	const outputDelay = vi.fn();
 

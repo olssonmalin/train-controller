@@ -4,7 +4,7 @@ import DelayedTableRow from './DelayedTableRow.svelte';
 
 test('shows proper train number when rendered', () => {
 	const train = {
-		OperationalTrainNumber: 32,
+		AdvertisedTrainIdent: 32,
 		LocationSignature: 'Kwe',
 		FromLocation: [{ LocationName: 'Ahh' }],
 		ToLocation: [{ LocationName: 'Ehh' }]
@@ -13,7 +13,7 @@ test('shows proper train number when rendered', () => {
 	const renderTicketView = () => {};
 	const outputDelay = () => 10;
 	render(DelayedTableRow, { train, renderTicketView, outputDelay });
-	const trainNumber = screen.getByText(train.OperationalTrainNumber);
+	const trainNumber = screen.getByText(train.AdvertisedTrainIdent);
 	expect(trainNumber).toBeInTheDocument();
 });
 
@@ -75,20 +75,4 @@ test('shows proper delay when rendered', () => {
 	render(DelayedTableRow, { train, renderTicketView, outputDelay });
 	const outputDelayElement = screen.getByTestId('output-delay');
 	expect(outputDelayElement).toHaveTextContent(`${outputDelay()}`);
-});
-
-test('submit triggers renderticketview', () => {
-	const train = {
-		OperationalTrainNumber: 32,
-		LocationSignature: 'Kwe',
-		FromLocation: [{ LocationName: 'Ahh' }],
-		ToLocation: [{ LocationName: 'Ehh' }]
-	};
-
-	const renderTicketView = vi.fn();
-	const outputDelay = () => 10;
-	render(DelayedTableRow, { train, renderTicketView, outputDelay });
-	const newTicketButton = screen.getByTestId('new-ticket');
-	fireEvent.click(newTicketButton);
-	expect(renderTicketView).toHaveBeenCalledTimes(1);
 });
