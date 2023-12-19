@@ -1,5 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import TicketLocks from './TicketLocks.mjs';
+import TicketLocks from './ticketLocks.mjs';
 
 describe('TicketLocks', () => {
     let ticketLocks;
