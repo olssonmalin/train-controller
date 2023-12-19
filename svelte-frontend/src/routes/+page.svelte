@@ -53,7 +53,7 @@
 			<nav>
 				<Login />
 				{#if $loggedInUser}
-					<button class="default-button"><a href="/editor/tickets">Ärenden</a></button>
+					<button class="default-button"><a href="./editor/tickets">Ärenden</a></button>
 				{/if}
 			</nav>
 			<DelayedTable {delayedTrains} />

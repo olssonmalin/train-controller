@@ -9,7 +9,6 @@ class TicketLocks {
             console.log('A user connected (TicketLocks)');
             socket.on('lockTicket', (ticketId, userId) => {
                 if (this.isTicketLocked(ticketId)) {
-                    // Ticket is already locked
                     const lockedBy = this.getLockingUser(ticketId);
                     socket.emit('ticketAlreadyLocked', ticketId, lockedBy);
                 } else {

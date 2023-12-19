@@ -147,10 +147,6 @@ input:hover {
 	background-color: #eee;
 }
 
-.old-tickets {
-	width: 50%;
-}
-
 .ticket-row {
 	width: 100%;
 	align-self: stretch;

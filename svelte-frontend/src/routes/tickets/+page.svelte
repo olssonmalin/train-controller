@@ -64,7 +64,7 @@
 <Notifications>
 	<section class="container">
 		<!-- Ticket list -->
-		<button class="default-button"><a href="/editor">Försenade tåg</a></button>
+		<button class="default-button"><a href="../editor">Försenade tåg</a></button>
 		<OldTickets {tickets} {codes} {getTickets} />
 	</section>
 </Notifications>
