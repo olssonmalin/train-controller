@@ -49,11 +49,15 @@
 </svelte:head>
 <Notifications>
 	<section class="container">
-		<Login />
-		{#if $loggedInUser}
-			<button><a href="/editor/tickets">Ärenden</a></button>
-		{/if}
-		<DelayedTable {delayedTrains} />
+		<div class="delayed-container">
+			<nav>
+				<Login />
+				{#if $loggedInUser}
+					<button class="default-button"><a href="/editor/tickets">Ärenden</a></button>
+				{/if}
+			</nav>
+			<DelayedTable {delayedTrains} />
+		</div>
 		{#if ticketViewStateValue !== 'active'}
 			<Map {delayedTrainNumbers} />
 		{/if}

@@ -28,24 +28,22 @@
 
 	onDestroy(() => {
 		socket.emit('unlockTicket', ticket._id);
+		socket.close();
 	});
 
 	onMount(() => {
 		socket = io(BACKEND_URL);
 
 		socket.on('ticketAlreadyLocked', (data) => {
-			console.log(data);
 			console.log('Ticket is already locked');
 			editable = false;
 		});
 
 		socket.on('ticketLocked', (data) => {
-			console.log(data);
 			console.log('Ticket is locked');
 		});
 
 		socket.on('ticketUnlocked', (data) => {
-			console.log(data);
 			console.log('Ticket is unlocked');
 			getTickets();
 			if (!editable) {
@@ -73,14 +71,11 @@
 			})
 		});
 		let result = await response.json();
-		// console.log(result.data.updateTicket);
 		await getTickets();
 		showEditTicket = false;
-		// await renderTicketView(selectedTrain);
 	}
 
 	async function removeTicket(event) {
-		console.log(ticket._id);
 		let response = await fetch(`${BACKEND_URL}/graphql`, {
 			method: 'POST',
 			headers: {
@@ -98,10 +93,8 @@
 			})
 		});
 		let result = await response.json();
-		console.log(result.data);
-		// await renderTicketView(selectedTrain);
 		await getTickets();
-		if (result.data.deleteTicket.success) {
+		if (result.data.deleteTicket) {
 			return true;
 		}
 		return false;
@@ -109,9 +102,8 @@
 </script>
 
 <button
+	class="default-button"
 	on:click={() => {
-		// showTrainMap.set(train.OperationalTrainNumber);
-
 		socket.emit('lockTicket', ticket._id, $loggedInUser);
 		showEditTicket = true;
 	}}>Ändra</button
@@ -121,7 +113,6 @@
 		id="update-ticket-form"
 		method="POST"
 		on:submit|preventDefault={() => {
-			console.log(editable);
 			if (editable) {
 				updateTicket();
 			}
@@ -142,9 +133,10 @@
 	</form>
 </Modal>
 <button
-	on:click={() => {
-		const deleted = removeTicket();
-		if (deleted.deleteTicket) {
+	class="blue-button"
+	on:click={async () => {
+		const deleted = await removeTicket();
+		if (deleted) {
 			addNotification({
 				text: 'Ärendet är borttaget',
 				type: 'success',

@@ -7,13 +7,22 @@
 	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 </script>
 
-<div data-testid="delayed-row">
-	<div data-testid="singular-ticket">
-		{ticket._id} - {ticket.code} - {ticket.trainnumber} - {ticket.traindate}
-
+<div class="delayed-row">
+	<div class="width-full">
+		<div>{ticket._id}</div>
+		<div>{ticket.code}</div>
+		<div>{ticket.trainnumber}</div>
+		<div>{ticket.traindate}</div>
+	</div>
+	<div>
 		<UpdateTicket {ticket} {codes} {getTickets} />
 	</div>
 </div>
 
 <style>
+	.width-full {
+		width: 70%;
+		display: flex;
+		justify-content: space-between;
+	}
 </style>

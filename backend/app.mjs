@@ -30,7 +30,7 @@ const graphQlHandler = createHandler({
                 token.replace('Bearer ', ''),
                 process.env.JWT_SECRET,
             );
-            return { user: decodedJwt };
+            return { user: decodedJwt, token: token.replace('Bearer ', '') };
         } catch (error) {
             return {};
         }
