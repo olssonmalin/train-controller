@@ -20,7 +20,7 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
 		<slot />
-		<button autofocus on:click={() => dialog.close()}>Stäng</button>
+		<button class="default-button" on:click={() => dialog.close()}>Stäng</button>
 	</div>
 </dialog>
 

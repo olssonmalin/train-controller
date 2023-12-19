@@ -20,6 +20,7 @@
 <div class="delayed">
 	<h1>Försenade tåg</h1>
 	<button
+		class="default-button"
 		on:click={() => {
 			$showTrainMap = null;
 			$showTrainTable = null;

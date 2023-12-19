@@ -72,6 +72,7 @@
 
 {#if $loggedInUser}
 	<button
+		class="default-button"
 		on:click={() => {
 			Cookies.remove('userToken');
 			$loggedInUser = null;
@@ -79,6 +80,7 @@
 	>
 {:else}
 	<button
+		class="default-button"
 		data-testid="log-in"
 		on:click={() => {
 			openLogIn = true;
@@ -92,7 +94,7 @@
 			<label for="password">Password:</label>
 			<input type="password" name="password" id="password" bind:value={password} />
 
-			<input type="submit" data-testid="login-submit" value="Logga in" />
+			<input class="default-button" type="submit" data-testid="login-submit" value="Logga in" />
 		</form>
 	</Modal>
 {/if}

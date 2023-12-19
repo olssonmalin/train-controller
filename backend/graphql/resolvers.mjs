@@ -141,10 +141,9 @@ export async function updateTicket({ input }, context) {
     if (context.user == null) {
         throw new Error('Unauthorized');
     }
-
     if (
         ticketLocks.isTicketLocked(input._id) &&
-        ticketLocks.getLockingUser(input._id) !== context.user.userId
+        ticketLocks.getLockingUser(input._id) !== context.token
     ) {
         throw new Error('Ticket is locked by someone else.');
     }

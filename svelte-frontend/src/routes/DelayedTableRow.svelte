@@ -6,6 +6,7 @@
 </script>
 
 <div
+	class="delayed-row"
 	data-testid="delayed-row"
 	on:click={() => {
 		showTrainMap.set(train.AdvertisedTrainIdent);
@@ -26,6 +27,7 @@
 	<div class="delay" data-testid="output-delay">{outputDelay(train)}</div>
 	{#if $loggedInUser}
 		<button
+			class="blue-button"
 			data-testid="new-ticket"
 			on:click={() => {
 				$selectedTrain = train;
