@@ -2,7 +2,11 @@
 	import { onMount, onDestroy, beforeUpdate, afterUpdate } from 'svelte';
 	import { showTrainMap, showTrainTable } from '../store.ts';
 	import L from 'leaflet';
+    import 'leaflet/dist/leaflet.css';
 	import { io } from 'socket.io-client';
+    import markerIconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+    import markerIconUrl from 'leaflet/dist/images/marker-icon.png';
+    import markerShadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 	const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -13,6 +17,13 @@
 	let singleMarker;
 	let markers = {};
 	export let delayedTrainNumbers;
+
+    delete L.Icon.Default.prototype._getIconUrl;
+    L.Icon.Default.mergeOptions({
+        iconRetinaUrl: markerIconRetinaUrl,
+        iconUrl: markerIconUrl,
+        shadowUrl: markerShadowUrl
+    });
 
 	onMount(() => {
 		map = L.map('map').setView([62.173276, 14.942265], 5);

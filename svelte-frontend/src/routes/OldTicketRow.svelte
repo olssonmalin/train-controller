@@ -12,7 +12,7 @@
 		<div>{ticket.trainnumber}</div>
 		<div>{ticket.traindate}</div>
 	</div>
-	<div>
+	<div class='flex-row'>
 		<UpdateTicket {ticket} {codes} {getTickets} />
 	</div>
 </div>
@@ -22,5 +22,9 @@
 		width: 70%;
 		display: flex;
 		justify-content: space-between;
+	}
+
+	.flex-row {
+		display: flex;
 	}
 </style>
